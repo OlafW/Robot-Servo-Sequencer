@@ -1,6 +1,6 @@
 # Receiving messages
 HOST = 'localhost'
-PORT = 5000
+PORT = 5005
 
 # Sending messages
 PD_HOST = 'localhost'
