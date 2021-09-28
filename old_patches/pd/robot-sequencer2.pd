@@ -1,0 +1,173 @@
+#N canvas 0 23 1280 755 12;
+#X declare -path else;
+#X floatatom 567 64 5 0 0 0 - - -;
+#X obj 514 65 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#N canvas 0 22 450 278 (subpatch) 0;
+#X array beweging3 50 float 1;
+#A 0 0.992857 0.957143 0.900001 0.842859 0.778574 0.700003 0.600004
+0.557148 0.514291 0.478577 0.464291 0.450006 0.428577 0.421435 0.414292
+0.400006 0.392864 0.371435 0.35715 0.350007 0.328578 0.30715 0.285722
+0.271436 0.264293 0.250008 0.242865 0.235722 0.22858 0.214294 0.200008
+0.192866 0.17858 0.164294 0.150009 0.142866 0.142866 0.128581 0.121438
+0.100009 0.0857239 0.0785811 0.0714383 0.0571527 0.05001 0.05001 0.05001
+0.0428672 0.0428672 0.0285816;
+#X coords 0 1 49 0 200 140 1 0 0;
+#X restore 72 414 graph;
+#X text 562 44 lees snelheid;
+#N canvas 0 22 450 278 (subpatch) 0;
+#X array beweging2 50 float 1;
+#A 0 0.0714286 0.0785711 0.0785711 0.0857137 0.0928562 0.0999988 0.114284
+0.128569 0.135711 0.142854 0.142854 0.157139 0.164282 0.171424 0.171424
+0.185709 0.207137 0.278562 0.364273 0.507124 0.578549 0.699972 0.785683
+0.871394 0.935676 0.949961 0.971389 0.978532 0.978532 0.942819 0.907106
+0.842823 0.699972 0.507124 0.335703 0.257135 0.214279 0.185709 0.178567
+0.171424 0.171424 0.171424 0.171424 0.185709 0.192852 0.199994 0.199994
+0.199994 0.199994 0.185709;
+#X coords 0 1 49 0 200 140 1 0 0;
+#X restore 72 247 graph;
+#N canvas 0 22 450 278 (subpatch) 0;
+#X array beweging1 50 float 1;
+#A 0 0.0999994 0.164284 0.271426 0.371425 0.428567 0.457139 0.521424
+0.56428 0.628565 0.671422 0.199998 0.17857 0.185713 0.207141 0.235712
+0.292855 0.392853 0.48571 0.578566 0.664279 0.714279 0.792849 0.835706
+0.778564 0.61428 0.492852 0.264283 0.221427 0.207141 0.199998 0.22857
+0.264283 0.378568 0.471424 0.599994 0.678565 0.778564 0.835706 0.807135
+0.714279 0.364282 0.114285 0.107142 0.128571 0.185713 0.342854 0.499995
+0.621423 0.721421 0.757135;
+#X coords 0 1 49 0 200 140 1 0 0;
+#X restore 72 71 graph;
+#X obj 356 724 netsend -u -b;
+#X obj 356 582 list trim;
+#X obj 471 641 loadbang;
+#X obj 356 558 list prepend send;
+#X msg 469 696 disconnect;
+#X obj 356 525 oscformat /servo;
+#X text 477 526 osc msg:'/servo servo_id \, angle';
+#X obj 356 489 r OSC_data;
+#X obj 297 540 print;
+#X obj 297 514 spigot;
+#X obj 336 490 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 471 669 connect localhost 5000;
+#X msg 471 615 connect raspberrypi.local 5000;
+#X text 281 471 print data;
+#X text 485 42 aan/uit;
+#X obj 70 22 declare -path else;
+#X obj 599 421 s OSC_data;
+#N canvas 0 23 1280 755 toServo1 0;
+#X obj 528 272 * 180;
+#X obj 528 296 clip 0 180;
+#X obj 528 320 list prepend 0;
+#X obj 528 244 inlet;
+#X obj 528 344 outlet;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 4 0;
+#X connect 3 0 0 0;
+#X restore 500 392 pd toServo1;
+#N canvas 0 23 1280 755 toServo2 0;
+#X obj 528 272 * 180;
+#X obj 528 296 clip 0 180;
+#X obj 528 244 inlet;
+#X obj 528 344 outlet;
+#X obj 528 320 list prepend 4;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 2 0 0 0;
+#X connect 4 0 3 0;
+#X restore 599 390 pd toServo2;
+#N canvas 0 23 1280 755 toServo3 0;
+#X obj 528 272 * 180;
+#X obj 528 296 clip 0 180;
+#X obj 528 244 inlet;
+#X obj 528 344 outlet;
+#X obj 528 320 list prepend 7;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 2 0 0 0;
+#X connect 4 0 3 0;
+#X restore 692 391 pd toServo3;
+#N canvas 0 23 1280 755 clock 1;
+#X obj 92 206 i;
+#X obj 134 206 + 1;
+#X obj 92 309 % 100;
+#X obj 92 172 metro 50;
+#X obj 92 128 inlet;
+#X obj 266 247 r graphsize;
+#X obj 92 230 t f f;
+#X obj 145 127 inlet;
+#X obj 234 276 / 100;
+#X obj 234 300 i;
+#X obj 234 351 bang;
+#X obj 92 437 send graph_index;
+#X obj 234 433 send step;
+#X obj 234 327 change -1;
+#X obj 124 281 r graphsize;
+#X obj 512 358 else/sequencer;
+#X obj 512 388 print;
+#X msg 607 327 0-0-0;
+#X connect 0 0 1 0;
+#X connect 0 0 6 0;
+#X connect 1 0 0 1;
+#X connect 2 0 11 0;
+#X connect 3 0 0 0;
+#X connect 4 0 3 0;
+#X connect 5 0 8 1;
+#X connect 6 0 2 0;
+#X connect 6 1 8 0;
+#X connect 7 0 3 1;
+#X connect 8 0 9 0;
+#X connect 9 0 13 0;
+#X connect 10 0 12 0;
+#X connect 13 0 10 0;
+#X connect 14 0 2 1;
+#X connect 15 0 16 0;
+#X connect 17 0 15 1;
+#X restore 514 104 pd clock;
+#X obj 551 226 sequencer_voice;
+#X obj 554 259 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 5352 1;
+#X msg 551 197 1 2 3;
+#X obj 707 226 sequencer_voice;
+#X obj 710 259 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 2631 1;
+#X obj 861 223 sequencer_voice;
+#X obj 864 256 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 2631 1;
+#X msg 861 194 1 2 3;
+#X obj 707 158 loadbang;
+#X obj 644 193 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 707 197 1 0 3, f 5;
+#X msg 288 87 50;
+#X obj 288 62 loadbang;
+#X msg 288 113 \; graphsize \$1 \; beweging1 resize \$1 \; beweging2
+resize \$1 \; beweging3 resize \$1 \;;
+#X connect 0 0 26 1;
+#X connect 1 0 26 0;
+#X connect 7 0 6 0;
+#X connect 8 0 17 0;
+#X connect 9 0 7 0;
+#X connect 10 0 6 0;
+#X connect 11 0 9 0;
+#X connect 13 0 11 0;
+#X connect 13 0 15 0;
+#X connect 15 0 14 0;
+#X connect 16 0 15 1;
+#X connect 17 0 6 0;
+#X connect 18 0 6 0;
+#X connect 23 0 22 0;
+#X connect 24 0 22 0;
+#X connect 25 0 22 0;
+#X connect 27 0 28 0;
+#X connect 29 0 27 0;
+#X connect 30 0 31 0;
+#X connect 32 0 33 0;
+#X connect 34 0 32 0;
+#X connect 35 0 29 0;
+#X connect 35 0 37 0;
+#X connect 35 0 34 0;
+#X connect 37 0 30 0;
+#X connect 38 0 40 0;
+#X connect 39 0 38 0;

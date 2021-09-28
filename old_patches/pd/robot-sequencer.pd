@@ -1,0 +1,392 @@
+#N canvas 0 23 1280 755 12;
+#X floatatom 527 54 5 0 0 0 - - -;
+#X obj 487 55 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 488 263 tabread4 beweging1;
+#X obj 655 262 tabread4 beweging2;
+#X obj 521 298 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 708 292 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X text 540 319 beweging 1;
+#X text 738 312 beweging 2;
+#N canvas 0 22 450 278 (subpatch) 0;
+#X array beweging3 100 float 1;
+#A 0 0.0571427 0.107142 0.157142 0.214284 0.242855 0.278569 0.30714
+0.342854 0.371425 0.421425 0.449996 0.478567 0.514281 0.535709 0.571423
+0.592851 0.61428 0.642851 0.657136 0.685708 0.714279 0.74285 0.771421
+0.792849 0.814278 0.835706 0.842849 0.857134 0.878563 0.899991 0.921419
+0.928562 0.942848 0.949991 0.957133 0.964276 0.964276 0.971419 0.971419
+0.985704 0.985704 0.985704 0.985704 0.985704 0.985704 0.985704 0.985704
+0.985704 0.978562 0.978562 0.971419 0.964276 0.957133 0.949991 0.942848
+0.935705 0.935705 0.928562 0.914277 0.899991 0.885705 0.878563 0.864277
+0.849992 0.842849 0.828563 0.814278 0.799992 0.785707 0.778564 0.764278
+0.749993 0.735707 0.721421 0.707136 0.69285 0.671422 0.642851 0.61428
+0.592851 0.56428 0.535709 0.507138 0.478567 0.449996 0.421425 0.392853
+0.364282 0.335711 0.321426 0.30714 0.264283 0.22857 0.192856 0.164284
+0.128571 0.0785711 0.0357144 -0.00714231 0.00714314;
+#X coords 0 1 99 0 200 140 1 0 0;
+#X restore 72 414 graph;
+#X obj 906 290 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 858 258 tabread4 beweging3;
+#X text 936 310 beweging 3;
+#N canvas 0 23 1280 755 sequencer 0;
+#X obj 525 293 i;
+#X obj 567 293 + 1;
+#X obj 578 387 % 100;
+#X obj 525 255 metro 50;
+#X obj 525 357 / 100;
+#X obj 525 381 i;
+#X obj 525 405 % 3;
+#X obj 525 322 t f f, f 8;
+#X obj 525 205 inlet;
+#X obj 578 204 inlet;
+#X obj 525 467 pack f f;
+#X obj 525 512 outlet;
+#X text 394 405 aantal bewegingen;
+#X text 624 388 hoeveelheid stappen in graph;
+#X obj 821 188 inlet;
+#X connect 0 0 1 0;
+#X connect 0 0 7 0;
+#X connect 1 0 0 1;
+#X connect 2 0 10 1;
+#X connect 3 0 0 0;
+#X connect 4 0 5 0;
+#X connect 5 0 6 0;
+#X connect 6 0 10 0;
+#X connect 7 0 4 0;
+#X connect 7 1 2 0;
+#X connect 8 0 3 0;
+#X connect 9 0 3 1;
+#X connect 10 0 11 0;
+#X connect 14 0 6 1;
+#X restore 487 94 pd sequencer;
+#X text 523 34 lees snelheid;
+#X obj 487 121 route 0 1 2;
+#X floatatom 949 44 5 0 0 0 - - -;
+#X obj 861 48 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 920 24 lees snelheid;
+#X obj 861 162 spigot;
+#X obj 949 122 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 917 162 spigot;
+#X obj 1005 122 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+1 1;
+#X obj 969 163 spigot;
+#X obj 1057 123 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+1 1;
+#N canvas 0 23 1280 755 sequencer2 0;
+#X obj 556 347 i;
+#X obj 598 347 + 1;
+#X obj 556 309 metro 50;
+#X obj 556 259 inlet;
+#X obj 609 258 inlet;
+#X obj 556 404 outlet;
+#X obj 556 371 % 100;
+#X connect 0 0 1 0;
+#X connect 0 0 6 0;
+#X connect 1 0 0 1;
+#X connect 2 0 0 0;
+#X connect 3 0 2 0;
+#X connect 4 0 2 1;
+#X connect 6 0 5 0;
+#X restore 861 87 pd sequencer2;
+#X text 722 92 sequencer: tegelijk;
+#X text 338 94 sequencer: na elkaar;
+#N canvas 0 22 450 278 (subpatch) 0;
+#X array beweging2 100 float 1;
+#A 0 0.0714286 0.0642858 0.0642858 0.0642858 0.057143 0.057143 0.057143
+0.0500002 0.0500002 0.0500002 0.0500002 0.0500002 0.0428574 0.0428574
+0.0428574 0.0428574 0.0428574 0.0357147 0.0357147 0.0285719 0.0285719
+0.0285719 0.0285719 0.0285719 0.0357147 0.0357147 0.0428574 0.0500002
+0.0500002 0.057143 0.0642858 0.0642858 0.0642858 0.0785714 0.0928569
+0.121428 0.135714 0.171428 0.192856 0.22857 0.285712 0.378568 0.514281
+0.807135 0.899991 0.957134 0.957134 0.964276 0.964276 0.971419 0.942848
+0.864277 0.807135 0.114285 0.0999997 0.0999997 0.0928569 0.0928569
+0.0928569 0.0928569 0.0857141 0.0857141 0.0857141 0.0857141 0.0785713
+0.0785713 0.0785713 0.0714285 0.0714285 0.0714285 0.0714285 0.0714285
+0.0714285 0.0714285 0.0714285 0.0714285 0.0714285 0.0714285 0.0714285
+0.0714285 0.0714285 0.0714285 0.0714285 0.0714285 0.0714285 0.0714285
+0.0785714 0.0785714 0.0785714 0.0785714 0.0785714 0.0785714 0.0785714
+0.0785714 0.0785714 0.0785714 0.0785714 0.0785714 0.0785714 0.0714289
+;
+#X coords 0 1 99 0 200 140 1 0 0;
+#X restore 72 247 graph;
+#N canvas 0 22 450 278 (subpatch) 0;
+#X array beweging1 100 float 1;
+#A 0 0.292857 0.3 0.314285 0.328571 0.349999 0.37857 0.414284 0.442855
+0.485712 0.521426 0.571426 0.607139 0.664282 0.728567 0.549997 0.335714
+0.399999 0.449998 0.485712 0.549997 0.599997 0.649996 0.68571 0.749995
+0.792852 0.807137 0.785709 0.68571 0.25 0.257143 0.314285 0.371428
+0.421427 0.478569 0.528569 0.571426 0.628568 0.692853 0.749995 0.807137
+0.849994 0.764281 0.678567 0.649996 0.478569 0.285714 0.385713 0.435713
+0.464284 0.535712 0.55714 0.592854 0.664282 0.728567 0.764281 0.828566
+0.785709 0.749995 0.707138 0.635711 0.457141 0.271429 0.371428 0.392856
+0.449998 0.485712 0.499998 0.55714 0.585711 0.621425 0.671425 0.771423
+0.835708 0.899994 0.699996 0.285714 0.221429 0.278571 0.357142 0.399999
+0.457141 0.507141 0.55714 0.599997 0.614282 0.68571 0.728567 0.307143
+0.385713 0.521426 0.549997 0.599997 0.642853 0.68571 0.749995 0.671425
+0.607139 0.514283 0.349999 0.285714;
+#X coords 0 1 99 0 200 140 1 0 0;
+#X restore 72 71 graph;
+#N canvas 0 23 1280 755 mixer 0;
+#X obj 387 224 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 564 223 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 370 273 * 1;
+#X obj 536 285 * 1;
+#X obj 429 345 +;
+#X obj 432 473 hsl 128 15 0 180 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 384 244 t b f;
+#X obj 561 245 t b f;
+#X text 417 201 mix 1;
+#X text 578 199 mix 2;
+#X obj 768 214 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 740 276 * 1;
+#X obj 765 236 t b f;
+#X text 782 190 mix 3;
+#X obj 536 309 t b f;
+#X obj 429 384 +;
+#X obj 740 300 t b f;
+#X text 241 472 mix van beweging 1 \, 2 \, 3;
+#X floatatom 429 493 5 0 0 0 - - -;
+#X obj 429 417 * 180;
+#X obj 429 444 clip 0 180;
+#X obj 312 99 inlet;
+#X obj 511 82 inlet;
+#X obj 733 96 inlet;
+#X connect 0 0 6 0;
+#X connect 1 0 7 0;
+#X connect 2 0 4 0;
+#X connect 3 0 14 0;
+#X connect 4 0 15 0;
+#X connect 5 0 18 0;
+#X connect 6 0 2 0;
+#X connect 6 1 2 1;
+#X connect 7 0 3 0;
+#X connect 7 1 3 1;
+#X connect 10 0 12 0;
+#X connect 11 0 16 0;
+#X connect 12 0 11 0;
+#X connect 12 1 11 1;
+#X connect 14 0 4 0;
+#X connect 14 1 4 1;
+#X connect 15 0 19 0;
+#X connect 16 0 15 0;
+#X connect 16 1 15 1;
+#X connect 19 0 20 0;
+#X connect 20 0 5 0;
+#X connect 21 0 2 0;
+#X connect 22 0 3 0;
+#X connect 23 0 11 0;
+#X restore 1145 368 pd mixer;
+#X obj 356 724 netsend -u -b;
+#X obj 356 582 list trim;
+#X obj 471 641 loadbang;
+#X obj 356 558 list prepend send;
+#X msg 469 696 disconnect;
+#X obj 356 525 oscformat /servo;
+#X text 477 526 osc msg:'/servo servo_id \, angle';
+#X obj 356 489 r OSC_data;
+#X obj 297 540 print;
+#X obj 297 514 spigot;
+#X obj 336 490 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 471 669 connect localhost 5000;
+#X msg 471 615 connect raspberrypi.local 5000;
+#N canvas 0 23 1280 755 servo_mixer 0;
+#X obj 423 181 inlet;
+#X obj 462 389 inlet;
+#X obj 535 501 outlet;
+#X obj 423 359 list prepend 1;
+#X obj 423 417 spigot;
+#X obj 535 416 spigot;
+#X obj 655 415 spigot;
+#X obj 535 358 list prepend 4;
+#X obj 655 357 list prepend 7;
+#X obj 574 388 inlet;
+#X obj 694 388 inlet;
+#X obj 423 276 * 180;
+#X obj 423 300 clip 0 180;
+#X obj 535 273 * 180;
+#X obj 535 297 clip 0 180;
+#X obj 655 275 * 180;
+#X obj 655 299 clip 0 180;
+#X connect 0 0 11 0;
+#X connect 0 0 13 0;
+#X connect 0 0 15 0;
+#X connect 1 0 4 1;
+#X connect 3 0 4 0;
+#X connect 4 0 2 0;
+#X connect 5 0 2 0;
+#X connect 6 0 2 0;
+#X connect 7 0 5 0;
+#X connect 8 0 6 0;
+#X connect 9 0 5 1;
+#X connect 10 0 6 1;
+#X connect 11 0 12 0;
+#X connect 12 0 3 0;
+#X connect 13 0 14 0;
+#X connect 14 0 7 0;
+#X connect 15 0 16 0;
+#X connect 16 0 8 0;
+#X restore 488 413 pd servo_mixer;
+#X obj 519 386 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 551 387 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 583 386 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 513 367 servo 1 \, 2 \, 3;
+#X obj 488 437 s OSC_data;
+#X obj 686 387 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 718 388 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 750 387 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 655 438 s OSC_data;
+#X obj 889 385 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 921 386 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 953 385 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 858 436 s OSC_data;
+#X obj 1057 97 loadmess 1;
+#X floatatom 568 55 5 0 0 0 - - -;
+#X text 607 54 aantal stappen;
+#X text 281 471 print data;
+#X text 458 32 aan/uit;
+#X text 848 25 aan/uit;
+#X text 672 367 servo 1 \, 2 \, 3;
+#X text 880 364 servo 1 \, 2 \, 3;
+#N canvas 0 23 1280 755 servo_mixer 0;
+#X obj 423 181 inlet;
+#X obj 462 389 inlet;
+#X obj 535 501 outlet;
+#X obj 423 359 list prepend 1;
+#X obj 423 417 spigot;
+#X obj 535 416 spigot;
+#X obj 655 415 spigot;
+#X obj 535 358 list prepend 4;
+#X obj 655 357 list prepend 7;
+#X obj 574 388 inlet;
+#X obj 694 388 inlet;
+#X obj 423 276 * 180;
+#X obj 423 300 clip 0 180;
+#X obj 535 273 * 180;
+#X obj 535 297 clip 0 180;
+#X obj 655 275 * 180;
+#X obj 655 299 clip 0 180;
+#X connect 0 0 11 0;
+#X connect 0 0 13 0;
+#X connect 0 0 15 0;
+#X connect 1 0 4 1;
+#X connect 3 0 4 0;
+#X connect 4 0 2 0;
+#X connect 5 0 2 0;
+#X connect 6 0 2 0;
+#X connect 7 0 5 0;
+#X connect 8 0 6 0;
+#X connect 9 0 5 1;
+#X connect 10 0 6 1;
+#X connect 11 0 12 0;
+#X connect 12 0 3 0;
+#X connect 13 0 14 0;
+#X connect 14 0 7 0;
+#X connect 15 0 16 0;
+#X connect 16 0 8 0;
+#X restore 655 414 pd servo_mixer;
+#N canvas 0 23 1280 755 servo_mixer 0;
+#X obj 423 181 inlet;
+#X obj 462 389 inlet;
+#X obj 535 501 outlet;
+#X obj 423 359 list prepend 1;
+#X obj 423 417 spigot;
+#X obj 535 416 spigot;
+#X obj 655 415 spigot;
+#X obj 535 358 list prepend 4;
+#X obj 655 357 list prepend 7;
+#X obj 574 388 inlet;
+#X obj 694 388 inlet;
+#X obj 423 276 * 180;
+#X obj 423 300 clip 0 180;
+#X obj 535 273 * 180;
+#X obj 535 297 clip 0 180;
+#X obj 655 275 * 180;
+#X obj 655 299 clip 0 180;
+#X connect 0 0 11 0;
+#X connect 0 0 13 0;
+#X connect 0 0 15 0;
+#X connect 1 0 4 1;
+#X connect 3 0 4 0;
+#X connect 4 0 2 0;
+#X connect 5 0 2 0;
+#X connect 6 0 2 0;
+#X connect 7 0 5 0;
+#X connect 8 0 6 0;
+#X connect 9 0 5 1;
+#X connect 10 0 6 1;
+#X connect 11 0 12 0;
+#X connect 12 0 3 0;
+#X connect 13 0 14 0;
+#X connect 14 0 7 0;
+#X connect 15 0 16 0;
+#X connect 16 0 8 0;
+#X restore 858 412 pd servo_mixer;
+#X connect 0 0 12 1;
+#X connect 1 0 12 0;
+#X connect 2 0 4 0;
+#X connect 2 0 43 0;
+#X connect 3 0 5 0;
+#X connect 3 0 65 0;
+#X connect 10 0 9 0;
+#X connect 10 0 66 0;
+#X connect 12 0 14 0;
+#X connect 14 0 2 0;
+#X connect 14 1 3 0;
+#X connect 14 2 10 0;
+#X connect 15 0 24 1;
+#X connect 16 0 24 0;
+#X connect 18 0 2 0;
+#X connect 19 0 18 1;
+#X connect 20 0 3 0;
+#X connect 21 0 20 1;
+#X connect 22 0 10 0;
+#X connect 23 0 22 1;
+#X connect 24 0 22 0;
+#X connect 24 0 20 0;
+#X connect 24 0 18 0;
+#X connect 31 0 30 0;
+#X connect 32 0 41 0;
+#X connect 33 0 31 0;
+#X connect 34 0 30 0;
+#X connect 35 0 33 0;
+#X connect 37 0 35 0;
+#X connect 37 0 39 0;
+#X connect 39 0 38 0;
+#X connect 40 0 39 1;
+#X connect 41 0 30 0;
+#X connect 42 0 30 0;
+#X connect 43 0 48 0;
+#X connect 44 0 43 1;
+#X connect 45 0 43 2;
+#X connect 46 0 43 3;
+#X connect 49 0 65 1;
+#X connect 50 0 65 2;
+#X connect 51 0 65 3;
+#X connect 53 0 66 1;
+#X connect 54 0 66 2;
+#X connect 55 0 66 3;
+#X connect 57 0 23 0;
+#X connect 57 0 19 0;
+#X connect 57 0 21 0;
+#X connect 58 0 12 2;
+#X connect 65 0 52 0;
+#X connect 66 0 56 0;
