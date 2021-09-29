@@ -17,7 +17,9 @@
 					"offset" : [ 0.0, 0.0, 0.0 ],
 					"play" : [ 0 ],
 					"scale" : [ 1.0, 1.0, 1.0 ],
-					"snapshot_interval" : [ 50 ]
+					"snapshot_interval" : [ 50 ],
+					"rpi_host" : [ "127.0.0.1" ],
+					"rpi_port" : [ 5005 ]
 				}
 
 			}
