@@ -4306,7 +4306,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1567.505127549171448, 287.896933555603027, 224.0, 22.0 ],
-					"text" : "sprintf symout %spresets/preset_v2.json"
+					"text" : "sprintf symout %spresets/preset_v1.json"
 				}
 
 			}
@@ -4441,7 +4441,7 @@
 			}
 , 			{
 				"box" : 				{
-					"autorestore" : "preset_v2.json",
+					"autorestore" : "preset_v1.json",
 					"id" : "obj-7",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -5569,7 +5569,7 @@
 		}
 ,
 		"dependency_cache" : [ 			{
-				"name" : "preset_v2.json",
+				"name" : "preset_v1.json",
 				"bootpath" : "~/Projecten/Carlo-Robot/Robot-Servo-Sequencer/presets",
 				"patcherrelativepath" : "./presets",
 				"type" : "JSON",
