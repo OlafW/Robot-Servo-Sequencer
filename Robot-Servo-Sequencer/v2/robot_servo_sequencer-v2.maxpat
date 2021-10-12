@@ -40,6 +40,17 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-18",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 364.0, 28.0, 74.0, 20.0 ],
+					"text" : "start/pause"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-67",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
@@ -96,6 +107,17 @@
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-2",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 83.5, 287.0, 32.0, 22.0 ],
+									"text" : "print"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-1",
 									"maxclass" : "newobj",
@@ -183,7 +205,16 @@
  ],
 						"lines" : [ 							{
 								"patchline" : 								{
+									"destination" : [ "obj-2", 0 ],
+									"order" : 0,
+									"source" : [ "obj-1", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-42", 0 ],
+									"order" : 1,
 									"source" : [ "obj-1", 0 ]
 								}
 
@@ -228,7 +259,6 @@
 					}
 ,
 					"patching_rect" : [ 704.0, 389.5, 85.0, 22.0 ],
-					"presentation_linecount" : 3,
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -373,7 +403,6 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
-						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-3",
@@ -509,7 +538,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 544.0, 272.0, 334.0, 186.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 38.0, 26.0, 1122.0, 608.0 ],
+									"presentation_rect" : [ 40.0, 22.0, 1122.0, 608.0 ],
 									"snap2grid" : 3
 								}
 
@@ -1321,7 +1350,7 @@
 ,
 					"shape" : 1,
 					"size" : 4,
-					"value" : 2,
+					"value" : 0,
 					"varname" : "radiogroup[1]"
 				}
 
